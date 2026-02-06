@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Rose Day Bebu 🌺</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: radial-gradient(circle at top, #ff8fab, #ff2f68);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', cursive;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Card */
+.card {
+    width: 90%;
+    max-width: 360px;
+    background: rgba(255,255,255,0.16);
+    backdrop-filter: blur(14px);
+    border-radius: 26px;
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: 0 32px 60px rgba(0,0,0,0.4);
+    animation: fadeIn 1.6s ease;
+}
+
+h1 {
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+/* Flower Area */
+.flower-box {
+    position: relative;
+    width: 180px;
+    height: 230px;
+    margin: 20px auto;
+}
+
+/* Blooming Hibiscus */
+.hibiscus {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    transform: scale(0.25) rotate(-8deg);
+    animation: bloom 3.2s ease forwards;
+}
+
+/* Steam Container */
+.steam {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    width: 90px;
+    height: 130px;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Steam Clouds */
+.steam span {
+    position: absolute;
+    bottom: 0;
+    width: 26px;
+    height: 26px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: steamUp 5.2s infinite ease-in-out;
+    opacity: 0;
+}
+
+.steam span:nth-child(1) {
+    left: 10px;
+    animation-delay: 0s;
+}
+.steam span:nth-child(2) {
+    left: 35px;
+    animation-delay: 1.6s;
+}
+.steam span:nth-child(3) {
+    left: 60px;
+    animation-delay: 3.2s;
+}
+
+/* Text */
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* Button */
+button {
+    margin-top: 18px;
+    padding: 10px 28px;
+    border-radius: 30px;
+    border: none;
+    background: #ff174f;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff003c;
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    animation: floatUp 4.8s linear;
+    opacity: 0.9;
+}
+
+/* Animations */
+@keyframes bloom {
+    0% {
+        transform: scale(0.25) rotate(-8deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes steamUp {
+    0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.8);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-100vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Romantic Instrumental Music -->
+<audio id="music" loop preload="auto">
+    <source src="music/romantic_song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+<div class="card">
+    <h1>🌺 Happy Rose Day 🌺</h1>
+
+    <div class="flower-box">
+
+        <!-- Steam -->
+        <div class="steam">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Hibiscus Flower -->
+        <img
+            src="https://pngimg.com/uploads/rose/rose_PNG639.png"
+            
+            class="hibiscus"
+            alt="Hibiscus rosa-sinensis"
+        >
+    </div>
+
+    <p id="text">
+        Dear Bebu,
+        This Rose blooms with warmth 🌺
+        bold, alive, and full of feeling —
+        just like what I carry for you ❤️
+    </p>
+
+    <button id="btn">Accept My Flower 💖</button>
+</div>
+
+<script>
+const btn = document.getElementById("btn");
+const text = document.getElementById("text");
+const music = document.getElementById("music");
+
+btn.addEventListener("click", () => {
+    music.play();
+    text.innerText =
+        "Flower accepted 🌺💘\n\nBebu, may this warmth\nand softness stay with you\nlong after today ❤️";
+    btn.innerText = "Music Playing 🎵";
+});
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 22 + 16 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4800);
+}
+setInterval(createHeart, 720);
+</script>
+
+</body>
+</html>
