@@ -166,11 +166,9 @@ button:hover {
 <body>
 
 <!-- Romantic Instrumental Music -->
-<audio id="music" loop preload="auto">
-    <source src="music/romantic_song.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+<audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
 </audio>
-
 
 <div class="card">
     <h1>🌺 Happy Rose Day 🌺</h1>
@@ -184,7 +182,7 @@ button:hover {
             <span></span>
         </div>
 
-        <!-- Hibiscus Flower -->
+        <!-- Rose Flower -->
         <img
             src="https://pngimg.com/uploads/rose/rose_PNG639.png"
             
@@ -208,25 +206,19 @@ const btn = document.getElementById("btn");
 const text = document.getElementById("text");
 const music = document.getElementById("music");
 
-btn.addEventListener("click", () => {
-    music.play();
-    text.innerText =
-        "Flower accepted 🌺💘\n\nBebu, may this warmth\nand softness stay with you\nlong after today ❤️";
-    btn.innerText = "Music Playing 🎵";
+btn.addEventListener("click", async () => {
+    try {
+        music.volume = 0.6;
+        await music.play();
+
+        text.innerText =
+            "Flower accepted 🌺💘\n\nBebu, may this warmth\nand softness stay with you\nlong after today ❤️";
+        btn.innerText = "Music Playing 🎵";
+    } catch (err) {
+        btn.innerText = "Tap again 🎵";
+        console.log("Audio blocked, retrying…");
+    }
 });
-
-// Floating hearts
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 22 + 16 + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4800);
-}
-setInterval(createHeart, 720);
 </script>
-
 </body>
 </html>
