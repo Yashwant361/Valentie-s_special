@@ -6,35 +6,52 @@
 <title>Happy Rose Day Bebu 🌺</title>
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
 
-body {
+body{
     height:100vh;
-    background: radial-gradient(circle at top, #ff8fab, #ff2f68);
+    background:radial-gradient(circle at top,#ff8fab,#ff2f68);
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family:'Segoe UI', cursive;
+    font-family:'Segoe UI',cursive;
     overflow:hidden;
     color:#fff;
 }
 
-/* ---------------- ENVELOPE ---------------- */
-.envelope {
+/* ================= HEARTS (SMALL, MEDIUM SPEED) ================= */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    font-size:16px;
+    animation:heartFloat 8s ease-in-out infinite;
+    opacity:.9;
+    z-index:2;
+}
+
+@keyframes heartFloat{
+    0%{transform:translateY(0) scale(.8);opacity:0}
+    15%{opacity:1}
+    50%{transform:translateY(-50vh) translateX(8px) scale(1)}
+    100%{transform:translateY(-100vh) translateX(-8px) scale(1.1);opacity:0}
+}
+
+/* ================= ENVELOPE ================= */
+.envelope{
     width:320px;
     height:220px;
     background:linear-gradient(135deg,#fff0f6,#ffd6e8);
     border-radius:16px;
     position:absolute;
-    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
     cursor:pointer;
     display:flex;
     justify-content:center;
     align-items:center;
-    animation:fadeIn 1.2s ease;
+    z-index:4;
 }
 
-.envelope::before {
+.envelope::before{
     content:"";
     position:absolute;
     top:0;
@@ -44,54 +61,55 @@ body {
     clip-path:polygon(0 0,50% 100%,100% 0);
 }
 
-.envelope-text {
-    position:relative;
-    z-index:2;
+.envelope-text{
     font-size:18px;
     font-weight:bold;
     color:#ff174f;
 }
 
-.envelope.open {
+.envelope.open{
     animation:openEnvelope 1s forwards;
 }
 
-@keyframes openEnvelope {
-    to { transform:scale(1.3); opacity:0; }
+@keyframes openEnvelope{
+    to{transform:scale(1.3);opacity:0}
 }
 
-/* ---------------- CARD ---------------- */
-.card {
+/* ================= CARD ================= */
+.card{
     display:none;
     width:90%;
     max-width:360px;
-    background:rgba(255,255,255,0.16);
+    background:rgba(255,255,255,.16);
     backdrop-filter:blur(14px);
     border-radius:26px;
     padding:28px 22px;
     text-align:center;
-    box-shadow:0 32px 60px rgba(0,0,0,0.4);
-    animation:fadeIn 1.6s ease;
+    box-shadow:0 32px 60px rgba(0,0,0,.4);
+    z-index:5;
 }
 
-h1 { font-size:26px; margin-bottom:12px; }
+h1{font-size:26px;margin-bottom:12px}
 
-/* ---------------- FLOWER ---------------- */
-.flower-box {
+/* ================= FLOWER ================= */
+.flower-box{
     position:relative;
     width:180px;
     height:230px;
     margin:20px auto;
 }
 
-.hibiscus {
+.hibiscus{
     width:100%;
-    z-index:2;
-    transform:scale(0.25) rotate(-8deg);
-    animation:bloom 3.2s ease forwards;
+    transform:scale(.25) rotate(-8deg);
+    animation:bloom 3s ease forwards;
 }
 
-.steam {
+@keyframes bloom{
+    to{transform:scale(1) rotate(0)}
+}
+
+.steam{
     position:absolute;
     bottom:120px;
     left:50%;
@@ -100,30 +118,31 @@ h1 { font-size:26px; margin-bottom:12px; }
     transform:translateX(-50%);
 }
 
-.steam span {
+.steam span{
     position:absolute;
     bottom:0;
     width:26px;
     height:26px;
-    background:rgba(255,255,255,0.85);
+    background:rgba(255,255,255,.85);
     border-radius:50%;
     filter:blur(10px);
-    animation:steamUp 5.2s infinite;
+    animation:steamUp 5s infinite;
     opacity:0;
 }
 
-.steam span:nth-child(1){ left:10px; animation-delay:0s; }
-.steam span:nth-child(2){ left:35px; animation-delay:1.6s; }
-.steam span:nth-child(3){ left:60px; animation-delay:3.2s; }
+.steam span:nth-child(1){left:10px}
+.steam span:nth-child(2){left:35px;animation-delay:1.5s}
+.steam span:nth-child(3){left:60px;animation-delay:3s}
 
-/* ---------------- TEXT & BUTTON ---------------- */
-p {
-    font-size:16px;
-    line-height:1.6;
-    white-space:pre-line;
+@keyframes steamUp{
+    0%{transform:translateY(0) scale(.6);opacity:0}
+    25%{opacity:.7}
+    100%{transform:translateY(-100px) scale(1.8);opacity:0}
 }
 
-button {
+p{font-size:16px;line-height:1.6;white-space:pre-line}
+
+button{
     margin-top:18px;
     padding:10px 28px;
     border-radius:30px;
@@ -132,24 +151,6 @@ button {
     color:#fff;
     font-size:15px;
     cursor:pointer;
-}
-
-button:hover { background:#ff003c; }
-
-/* ---------------- ANIMATIONS ---------------- */
-@keyframes bloom {
-    to { transform:scale(1) rotate(0); }
-}
-
-@keyframes steamUp {
-    0% { transform:translateY(0) scale(0.6); opacity:0; }
-    25% { opacity:0.7; }
-    100% { transform:translateY(-100px) scale(1.8); opacity:0; }
-}
-
-@keyframes fadeIn {
-    from { opacity:0; transform:translateY(40px); }
-    to { opacity:1; transform:translateY(0); }
 }
 </style>
 </head>
@@ -172,9 +173,9 @@ button:hover { background:#ff003c; }
 
     <div class="flower-box">
         <div class="steam"><span></span><span></span><span></span></div>
-        <img src="https://pngimg.com/uploads/rose/rose_PNG639.png"
-             class="hibiscus"
-             alt="Hibiscus rosa-sinensis">
+        <img 
+       src="https://pngimg.com/uploads/rose/rose_PNG639.png"
+             class="hibiscus">
     </div>
 
     <p id="text">
@@ -188,26 +189,37 @@ just like what I carry for you ❤️
 </div>
 
 <script>
-const envelope = document.getElementById("envelope");
-const card = document.getElementById("card");
-const btn = document.getElementById("btn");
-const text = document.getElementById("text");
-const music = document.getElementById("music");
+const envelope=document.getElementById("envelope");
+const card=document.getElementById("card");
+const btn=document.getElementById("btn");
+const text=document.getElementById("text");
+const music=document.getElementById("music");
 
-envelope.addEventListener("click", async () => {
+/* CREATE SMALL HEARTS (MEDIUM SPEED) */
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerText="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),8000);
+}
+setInterval(createHeart,1000);
+
+/* OPEN LETTER */
+envelope.onclick=async()=>{
     envelope.classList.add("open");
-    setTimeout(async () => {
-        envelope.style.display = "none";
-        card.style.display = "block";
-        try { music.volume = 0.5; await music.play(); } catch {}
-    }, 900);
-});
+    setTimeout(async()=>{
+        envelope.style.display="none";
+        card.style.display="block";
+        try{music.volume=.5;await music.play()}catch{}
+    },900);
+};
 
-btn.addEventListener("click", () => {
-    text.innerText =
-"Flower accepted 🌺💘\n\nBebu, may this warmth\nand softness stay with you\nlong after today ❤️";
-    btn.innerText = "Music Playing 🎵";
-});
+btn.onclick=()=>{
+    text.innerText="Flower accepted 🌺💘\n\nBebu, may this warmth\nand softness stay with you\nlong after today ❤️";
+    btn.innerText="Music Playing 🎵";
+};
 </script>
 
 </body>
