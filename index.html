@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Rose Day Bebu 🌺</title>
+<title>Happy Propose Day Bebu 💍</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
     height:100vh;
-    background:radial-gradient(circle at top,#ff8fab,#ff2f68);
+    background:
+      radial-gradient(circle at top,#2c2f4a,#0f1020 60%),
+      radial-gradient(circle at 80% 20%,rgba(255,255,255,.15),transparent 40%);
     display:flex;
     justify-content:center;
     align-items:center;
@@ -19,121 +21,140 @@ body{
     color:#fff;
 }
 
-/* ================= HEARTS (SMALL, MEDIUM SPEED) ================= */
+/* 🌙 MOON */
+.moon{
+    position:absolute;
+    top:40px;
+    right:40px;
+    width:140px;
+    height:140px;
+    background:radial-gradient(circle,#fff,#d9dcff 60%);
+    border-radius:50%;
+    filter:blur(1px);
+    box-shadow:
+      0 0 40px rgba(255,255,255,.8),
+      0 0 120px rgba(180,190,255,.6);
+    animation:moonPulse 6s ease-in-out infinite;
+    z-index:1;
+}
+
+@keyframes moonPulse{
+    0%,100%{box-shadow:0 0 40px rgba(255,255,255,.6),0 0 120px rgba(180,190,255,.4)}
+    50%{box-shadow:0 0 70px rgba(255,255,255,.9),0 0 180px rgba(180,190,255,.8)}
+}
+
+/* 🌙 MOON RAYS */
+.ray{
+    position:absolute;
+    width:2px;
+    height:120vh;
+    background:linear-gradient(transparent,rgba(255,255,255,.08),transparent);
+    top:-10vh;
+    animation:rayMove 20s linear infinite;
+    z-index:1;
+}
+.ray:nth-child(1){left:20%;animation-duration:22s}
+.ray:nth-child(2){left:50%;animation-duration:26s}
+.ray:nth-child(3){left:75%;animation-duration:24s}
+
+@keyframes rayMove{
+    from{transform:translateY(-20vh)}
+    to{transform:translateY(120vh)}
+}
+
+/* ❤️ SMALL HEARTS */
 .heart{
     position:absolute;
     bottom:-20px;
-    font-size:16px;
+    font-size:14px;
     animation:heartFloat 8s ease-in-out infinite;
-    opacity:.9;
+    opacity:.85;
     z-index:2;
 }
-
 @keyframes heartFloat{
     0%{transform:translateY(0) scale(.8);opacity:0}
     15%{opacity:1}
-    50%{transform:translateY(-50vh) translateX(8px) scale(1)}
-    100%{transform:translateY(-100vh) translateX(-8px) scale(1.1);opacity:0}
+    50%{transform:translateY(-50vh) translateX(6px) scale(1)}
+    100%{transform:translateY(-100vh) translateX(-6px) scale(1.1);opacity:0}
 }
 
-/* ================= ENVELOPE ================= */
+/* ✉️ ENVELOPE */
 .envelope{
-    width:320px;
-    height:220px;
-    background:linear-gradient(135deg,#fff0f6,#ffd6e8);
+    width:320px;height:220px;
+    background:linear-gradient(135deg,#f5f7ff,#dcdfff);
     border-radius:16px;
     position:absolute;
-    box-shadow:0 20px 40px rgba(0,0,0,.3);
+    box-shadow:0 20px 40px rgba(0,0,0,.5);
     cursor:pointer;
     display:flex;
     justify-content:center;
     align-items:center;
     z-index:4;
 }
-
 .envelope::before{
     content:"";
-    position:absolute;
-    top:0;
-    width:100%;
-    height:50%;
-    background:#ffb3d9;
+    position:absolute;top:0;width:100%;height:50%;
+    background:#c9cfff;
     clip-path:polygon(0 0,50% 100%,100% 0);
 }
-
 .envelope-text{
-    font-size:18px;
+    color:#2c2f4a;
     font-weight:bold;
-    color:#ff174f;
 }
+.envelope.open{animation:openEnv 1s forwards}
+@keyframes openEnv{to{transform:scale(1.3);opacity:0}}
 
-.envelope.open{
-    animation:openEnvelope 1s forwards;
-}
-
-@keyframes openEnvelope{
-    to{transform:scale(1.3);opacity:0}
-}
-
-/* ================= CARD ================= */
+/* 💌 CARD (MOON GLOW) */
 .card{
     display:none;
     width:90%;
     max-width:360px;
-    background:rgba(255,255,255,.16);
-    backdrop-filter:blur(14px);
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
     border-radius:26px;
     padding:28px 22px;
     text-align:center;
-    box-shadow:0 32px 60px rgba(0,0,0,.4);
+    box-shadow:
+      0 0 25px rgba(200,210,255,.6),
+      0 0 80px rgba(160,170,255,.4);
+    animation:cardGlow 5s ease-in-out infinite;
     z-index:5;
 }
-
-h1{font-size:26px;margin-bottom:12px}
-
-/* ================= FLOWER ================= */
-.flower-box{
-    position:relative;
-    width:180px;
-    height:230px;
-    margin:20px auto;
+@keyframes cardGlow{
+    0%,100%{box-shadow:0 0 25px rgba(200,210,255,.6),0 0 80px rgba(160,170,255,.4)}
+    50%{box-shadow:0 0 45px rgba(220,230,255,.9),0 0 140px rgba(180,190,255,.8)}
 }
 
+h1{margin-bottom:12px}
+
+/* 🌺 FLOWER */
+.flower-box{
+    position:relative;
+    width:180px;height:230px;
+    margin:20px auto;
+}
 .hibiscus{
     width:100%;
     transform:scale(.25) rotate(-8deg);
     animation:bloom 3s ease forwards;
 }
+@keyframes bloom{to{transform:scale(1) rotate(0)}}
 
-@keyframes bloom{
-    to{transform:scale(1) rotate(0)}
-}
-
+/* steam */
 .steam{
-    position:absolute;
-    bottom:120px;
-    left:50%;
-    width:90px;
-    height:130px;
+    position:absolute;bottom:120px;left:50%;
+    width:90px;height:130px;
     transform:translateX(-50%);
 }
-
 .steam span{
-    position:absolute;
-    bottom:0;
-    width:26px;
-    height:26px;
+    position:absolute;bottom:0;width:26px;height:26px;
     background:rgba(255,255,255,.85);
-    border-radius:50%;
-    filter:blur(10px);
-    animation:steamUp 5s infinite;
-    opacity:0;
+    border-radius:50%;filter:blur(10px);
+    animation:steamUp 5s infinite;opacity:0
 }
-
 .steam span:nth-child(1){left:10px}
 .steam span:nth-child(2){left:35px;animation-delay:1.5s}
 .steam span:nth-child(3){left:60px;animation-delay:3s}
-
 @keyframes steamUp{
     0%{transform:translateY(0) scale(.6);opacity:0}
     25%{opacity:.7}
@@ -147,7 +168,7 @@ button{
     padding:10px 28px;
     border-radius:30px;
     border:none;
-    background:#ff174f;
+    background:#5a6bff;
     color:#fff;
     font-size:15px;
     cursor:pointer;
@@ -157,35 +178,43 @@ button{
 
 <body>
 
+<!-- MOON & RAYS -->
+<div class="moon"></div>
+<div class="ray"></div>
+<div class="ray"></div>
+<div class="ray"></div>
+
 <!-- AUDIO -->
 <audio id="music" loop>
-    <source src="./music/romantic_song.mp3" type="audio/mp3">
+  <source src="./music/romantic_song.mp3" type="audio/mp3">
 </audio>
 
 <!-- ENVELOPE -->
 <div class="envelope" id="envelope">
-    <div class="envelope-text">💌 Open Letter</div>
+  <div class="envelope-text">💌 Open Letter</div>
 </div>
 
 <!-- CARD -->
 <div class="card" id="card">
-    <h1>🌺 Happy Rose Day 🌺</h1>
+  <h1 >💍<span style="font-style:italic;">Happy Propose Day </span> 💍</h1>
 
-    <div class="flower-box">
-        <div class="steam"><span></span><span></span><span></span></div>
-        <img 
-       src="https://pngimg.com/uploads/rose/rose_PNG639.png"
-             class="hibiscus">
-    </div>
+  <div class="flower-box">
+    <div class="steam"><span></span><span></span><span></span></div>
+    <img src="https://media.tenor.com/Nf2-eqLGM1AAAAAi/propose-marriage.gif"
+         class="hibiscus">
+  </div>
 
-    <p id="text">
+  <br id="text">
 Dear Bebu,
-This flower blooms with warmth 🌺
-bold, alive, and full of feeling —
-just like what I carry for you ❤️
-    </p>
+Raat ki is chaandni mein 🌙
+ek hi sawaal dil se nikalta hai…
 
-    <button id="btn">Accept My Flower 💖</button>
+Kya tum meri zindagi
+banogi? ❤️
+</br>-Yash
+  </p>
+
+  <button id="btn">Say Yes 💖</button>
 </div>
 
 <script>
@@ -195,30 +224,31 @@ const btn=document.getElementById("btn");
 const text=document.getElementById("text");
 const music=document.getElementById("music");
 
-/* CREATE SMALL HEARTS (MEDIUM SPEED) */
-function createHeart(){
-    const heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerText="❤️";
-    heart.style.left=Math.random()*100+"vw";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),8000);
-}
-setInterval(createHeart,1000);
+/* hearts */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.textContent="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+},);
 
-/* OPEN LETTER */
+/* open letter */
 envelope.onclick=async()=>{
-    envelope.classList.add("open");
-    setTimeout(async()=>{
-        envelope.style.display="none";
-        card.style.display="block";
-        try{music.volume=.5;await music.play()}catch{}
-    },900);
+  envelope.classList.add("open");
+  setTimeout(async()=>{
+    envelope.style.display="none";
+    card.style.display="block";
+    try{music.volume=.45;await music.play()}catch{}
+  },900);
 };
 
+/* accept */
 btn.onclick=()=>{
-    text.innerText="Flower accepted 🌺💘\n\nBebu, may this warmth\nand softness stay with you\nlong after today ❤️\n-Yash";
-    btn.innerText="Music Playing 🎵";
+  text.innerText=
+"She said YES 💍❤️\n\nIss chaandni raat mein,\nhum dono ek kahaani ban gaye.\n\nForever starts now 🌙✨";
+  btn.innerText="Forever ♾️";
 };
 </script>
 
