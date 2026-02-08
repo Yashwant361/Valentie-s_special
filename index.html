@@ -3,255 +3,670 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Propose Day Bebu 💍</title>
+<title>Happy Chocolate Day Bas & Bebu 🍫💕</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-    height:100vh;
-    background:
-      radial-gradient(circle at top,#2c2f4a,#0f1020 60%),
-      radial-gradient(circle at 80% 20%,rgba(255,255,255,.15),transparent 40%);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:'Segoe UI',cursive;
-    overflow:hidden;
-    color:#fff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* 🌙 MOON */
-.moon{
-    position:absolute;
-    top:40px;
-    right:40px;
-    width:140px;
-    height:140px;
-    background:radial-gradient(circle,#fff,#d9dcff 60%);
-    border-radius:50%;
-    filter:blur(1px);
-    box-shadow:
-      0 0 40px rgba(255,255,255,.8),
-      0 0 120px rgba(180,190,255,.6);
-    animation:moonPulse 6s ease-in-out infinite;
-    z-index:1;
+body {
+    height: 100vh;
+    background: 
+        radial-gradient(ellipse at top, #6b4423, #3e2723 50%, #1a0f0a),
+        linear-gradient(135deg, #8b4513 0%, #4a2511 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', 'Segoe UI', serif;
+    overflow: hidden;
+    color: #fff;
+    position: relative;
 }
 
-@keyframes moonPulse{
-    0%,100%{box-shadow:0 0 40px rgba(255,255,255,.6),0 0 120px rgba(180,190,255,.4)}
-    50%{box-shadow:0 0 70px rgba(255,255,255,.9),0 0 180px rgba(180,190,255,.8)}
+/* Chocolate rain/confetti */
+.chocolate-rain {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
 }
 
-/* 🌙 MOON RAYS */
-.ray{
-    position:absolute;
-    width:2px;
-    height:120vh;
-    background:linear-gradient(transparent,rgba(255,255,255,.08),transparent);
-    top:-10vh;
-    animation:rayMove 20s linear infinite;
-    z-index:1;
-}
-.ray:nth-child(1){left:20%;animation-duration:22s}
-.ray:nth-child(2){left:50%;animation-duration:26s}
-.ray:nth-child(3){left:75%;animation-duration:24s}
-
-@keyframes rayMove{
-    from{transform:translateY(-20vh)}
-    to{transform:translateY(120vh)}
+.chocolate-piece {
+    position: absolute;
+    font-size: 20px;
+    animation: chocolateFall 8s linear infinite;
+    opacity: 0;
 }
 
-/* ❤️ SMALL HEARTS */
-.heart{
-    position:absolute;
-    bottom:-20px;
-    font-size:14px;
-    animation:heartFloat 8s ease-in-out infinite;
-    opacity:.85;
-    z-index:2;
-}
-@keyframes heartFloat{
-    0%{transform:translateY(0) scale(.8);opacity:0}
-    15%{opacity:1}
-    50%{transform:translateY(-50vh) translateX(6px) scale(1)}
-    100%{transform:translateY(-100vh) translateX(-6px) scale(1.1);opacity:0}
-}
-
-/* ✉️ ENVELOPE */
-.envelope{
-    width:320px;height:220px;
-    background:linear-gradient(135deg,#f5f7ff,#dcdfff);
-    border-radius:16px;
-    position:absolute;
-    box-shadow:0 20px 40px rgba(0,0,0,.5);
-    cursor:pointer;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:4;
-}
-.envelope::before{
-    content:"";
-    position:absolute;top:0;width:100%;height:50%;
-    background:#c9cfff;
-    clip-path:polygon(0 0,50% 100%,100% 0);
-}
-.envelope-text{
-    color:#2c2f4a;
-    font-weight:bold;
-}
-.envelope.open{animation:openEnv 1s forwards}
-@keyframes openEnv{to{transform:scale(1.3);opacity:0}}
-
-/* 💌 CARD (MOON GLOW) */
-.card{
-    display:none;
-    width:90%;
-    max-width:360px;
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(18px);
-    border-radius:26px;
-    padding:28px 22px;
-    text-align:center;
-    box-shadow:
-      0 0 25px rgba(200,210,255,.6),
-      0 0 80px rgba(160,170,255,.4);
-    animation:cardGlow 5s ease-in-out infinite;
-    z-index:5;
-}
-@keyframes cardGlow{
-    0%,100%{box-shadow:0 0 25px rgba(200,210,255,.6),0 0 80px rgba(160,170,255,.4)}
-    50%{box-shadow:0 0 45px rgba(220,230,255,.9),0 0 140px rgba(180,190,255,.8)}
+@keyframes chocolateFall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
-h1{margin-bottom:12px}
-
-/* 🌺 FLOWER */
-.flower-box{
-    position:relative;
-    width:180px;height:230px;
-    margin:20px auto;
-}
-.hibiscus{
-    width:100%;
-    transform:scale(.25) rotate(-8deg);
-    animation:bloom 3s ease forwards;
-}
-@keyframes bloom{to{transform:scale(1) rotate(0)}}
-
-/* steam */
-.steam{
-    position:absolute;bottom:120px;left:50%;
-    width:90px;height:130px;
-    transform:translateX(-50%);
-}
-.steam span{
-    position:absolute;bottom:0;width:26px;height:26px;
-    background:rgba(255,255,255,.85);
-    border-radius:50%;filter:blur(10px);
-    animation:steamUp 5s infinite;opacity:0
-}
-.steam span:nth-child(1){left:10px}
-.steam span:nth-child(2){left:35px;animation-delay:1.5s}
-.steam span:nth-child(3){left:60px;animation-delay:3s}
-@keyframes steamUp{
-    0%{transform:translateY(0) scale(.6);opacity:0}
-    25%{opacity:.7}
-    100%{transform:translateY(-100px) scale(1.8);opacity:0}
+/* Floating hearts - Small and Large */
+.heart-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
 }
 
-p{font-size:16px;line-height:1.6;white-space:pre-line}
+.heart {
+    position: absolute;
+    bottom: -30px;
+    animation: heartFloat 7s ease-in-out infinite;
+    opacity: 0.8;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
 
-button{
-    margin-top:18px;
-    padding:10px 28px;
-    border-radius:30px;
-    border:none;
-    background:#5a6bff;
-    color:#fff;
-    font-size:15px;
-    cursor:pointer;
+.heart.small {
+    font-size: 18px;
+    animation-duration: 6s;
+}
+
+.heart.medium {
+    font-size: 28px;
+    animation-duration: 7s;
+}
+
+.heart.large {
+    font-size: 42px;
+    animation-duration: 8s;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.heart.extra-large {
+    font-size: 60px;
+    animation-duration: 9s;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+    opacity: 0.9;
+}
+
+@keyframes heartFloat {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Sparkles */
+.sparkle-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ffd700;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffd700;
+    animation: twinkle 2.5s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Main card */
+.card {
+    width: 90%;
+    max-width: 450px;
+    background: linear-gradient(135deg, 
+        rgba(139, 69, 19, 0.4), 
+        rgba(101, 67, 33, 0.3));
+    backdrop-filter: blur(20px);
+    border-radius: 35px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 40px 80px rgba(139, 69, 19, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    animation: cardEntrance 1.5s ease;
+    position: relative;
+    z-index: 10;
+    border: 1px solid rgba(210, 180, 140, 0.3);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, 
+        rgba(210, 180, 140, 0.6), 
+        rgba(139, 69, 19, 0.6), 
+        rgba(101, 67, 33, 0.6));
+    border-radius: 35px;
+    z-index: -1;
+    filter: blur(25px);
+    opacity: 0.8;
+    animation: glowPulse 5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+h1 {
+    font-size: 34px;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #ffd700, #ffed4e, #d4af37);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleShine 4s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes titleShine {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #ffd700;
+    font-style: italic;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Chocolate box animation */
+.chocolate-box {
+    width: 220px;
+    height: 220px;
+    margin: 25px auto;
+    position: relative;
+    animation: boxFloat 4s ease-in-out infinite;
+}
+
+@keyframes boxFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.chocolate-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
+    animation: rotate3d 3s ease-in-out forwards;
+}
+
+@keyframes rotate3d {
+    from {
+        transform: scale(0.5) rotateY(-180deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+/* Steam/Aroma effect */
+.steam-container {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 80px;
+    z-index: 5;
+}
+
+.steam {
+    position: absolute;
+    width: 8px;
+    height: 50px;
+    background: linear-gradient(to top, 
+        rgba(210, 180, 140, 0.8), 
+        transparent);
+    border-radius: 50%;
+    filter: blur(8px);
+    animation: steamRise 4s infinite ease-in-out;
+    opacity: 0;
+}
+
+.steam:nth-child(1) {
+    left: 30px;
+    animation-delay: 0s;
+}
+
+.steam:nth-child(2) {
+    left: 55px;
+    animation-delay: 1.3s;
+}
+
+.steam:nth-child(3) {
+    left: 80px;
+    animation-delay: 2.6s;
+}
+
+@keyframes steamRise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-80px) scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* Message box */
+.message-box {
+    background: rgba(101, 67, 33, 0.4);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 25px 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(210, 180, 140, 0.3);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #ffefd5;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.author {
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 15px;
+    color: #ffd700;
+}
+
+/* Button */
+button {
+    margin-top: 20px;
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, #d2691e, #8b4513);
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s;
+    box-shadow: 
+        0 6px 20px rgba(139, 69, 19, 0.5),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #cd853f, #a0522d);
+    transform: scale(1.08);
+    box-shadow: 0 10px 35px rgba(205, 133, 63, 0.7);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Music indicator */
+.music-playing {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.music-bars {
+    display: inline-flex;
+    gap: 3px;
+    height: 18px;
+    align-items: flex-end;
+}
+
+.music-bars span {
+    width: 3px;
+    background: white;
+    border-radius: 2px;
+    animation: musicBounce 1.2s ease-in-out infinite;
+}
+
+.music-bars span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.music-bars span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.music-bars span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes musicBounce {
+    0%, 100% {
+        height: 6px;
+    }
+    50% {
+        height: 18px;
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+    .subtitle {
+        font-size: 17px;
+    }
+    p {
+        font-size: 16px;
+    }
+    button {
+        padding: 12px 32px;
+        font-size: 16px;
+    }
+    .chocolate-box {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* Loading animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- MOON & RAYS -->
-<div class="moon"></div>
-<div class="ray"></div>
-<div class="ray"></div>
-<div class="ray"></div>
+<!-- Chocolate rain -->
+<div class="chocolate-rain" id="chocolateRain"></div>
 
+<!-- Heart container -->
+<div class="heart-container" id="heartContainer"></div>
 
-<!-- AUDIO -->
-<audio id="music" loop>
-  <source src="./music/romantic_song.mp3" type="audio/mp3">
+<!-- Sparkles -->
+<div class="sparkle-container" id="sparkleContainer"></div>
+
+<!-- Background music -->
+<audio id="music" loop preload="auto">
+    <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+    <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_a3f4c5b29e.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ENVELOPE -->
-<div class="envelope" id="envelope">
-  <div class="envelope-text">💌 Open Letter</div>
-</div>
+<!-- Main card -->
+<div class="card">
+    <h1>🍫 Happy Chocolate Day 🍫</h1>
+    <div class="subtitle">Bebu</div>
 
-<!-- CARD -->
-<div class="card" id="card">
-  <h1 >💍<span style="font-style:italic;">Happy Propose Day </span> 💍</h1>
+    <div class="chocolate-box">
+        <div class="steam-container">
+            <div class="steam"></div>
+            <div class="steam"></div>
+            <div class="steam"></div>
+        </div>
+        <img src="https://media0.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eGM5eTZzbHNtOG8yd2pvcDNwNmZjenY4NHd5bzhnZjFxOXJmdTJsaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9EFmKQqYdC9rk9tlb7/giphy.webp" 
+             alt="Chocolate box" 
+             id="chocolateImg"
+             onerror="this.onerror=null; this.src='https://media.tenor.com/K28P7-01MHsAAAAi/chocolate-box.gif';">
+    </div>
 
-  <div class="flower-box">
-    <div class="steam"><span></span><span></span><span></span></div>
-    <img src="https://media.tenor.com/Nf2-eqLGM1AAAAAi/propose-marriage.gif"
-         class="hibiscus">
-  </div>
+    <div class="message-box">
+        <p id="message">My Sweet Bebu,
 
-  <br id="text">
-Dear Bebu,
-Raat ki is chaandni mein 🌙
-ek hi sawaal dil se nikalta hai…
+Just like chocolate brings sweetness
+to every moment, you bring joy
+to every beat of my heart 🍫❤️
 
-Kya tum meri zindagi
-banogi? ❤️
-</br>-Yash
-  </p>
+You're sweeter than the finest chocolate,
+more precious than gold 💕
 
-  <button id="btn">Say Yes 💖</button>
+This Chocolate Day, I give you
+all my love wrapped in sweetness!</p>
+        <div class="author">~ Your Bas 💝</div>
+    </div>
+
+    <button id="btn">🍫 Accept My Love 🍫</button>
 </div>
 
 <script>
-const envelope=document.getElementById("envelope");
-const card=document.getElementById("card");
-const btn=document.getElementById("btn");
-const text=document.getElementById("text");
-const music=document.getElementById("music");
+const btn = document.getElementById('btn');
+const message = document.getElementById('message');
+const music = document.getElementById('music');
+const chocolateRain = document.getElementById('chocolateRain');
+const heartContainer = document.getElementById('heartContainer');
+const sparkleContainer = document.getElementById('sparkleContainer');
 
-/* hearts */
-setInterval(()=>{
-  const h=document.createElement("div");
-  h.className="heart";
-  h.textContent="❤️";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),8000);
-},10);
+let musicPlaying = false;
 
-/* open letter */
-envelope.onclick=async()=>{
-  envelope.classList.add("open");
-  setTimeout(async()=>{
-    envelope.style.display="none";
-    card.style.display="block";
-    try{music.volume=.45;await music.play()}catch{}
-  },900);
-};
+// Button click handler
+btn.addEventListener('click', () => {
+    if (!musicPlaying) {
+        // Play music
+        music.volume = 0.4;
+        music.play().catch(e => {
+            console.log('Music play error:', e);
+            // Fallback music
+            music.src = 'https://cdn.pixabay.com/audio/2023/02/28/audio_a3f4c5b29e.mp3';
+            music.play();
+        });
 
-/* accept */
-btn.onclick=()=>{
-  text.innerText=
-"She said YES 💍❤️\n\nIss chaandni raat mein,\nhum dono ek kahaani ban gaye.\n\nForever starts now 🌙✨";
-  btn.innerText="Forever ♾️";
-};
+        // Change message
+        message.innerHTML = `Love Accepted! 🍫💕
+
+Bebu, you've melted my heart
+just like chocolate melts in warmth.
+
+Our love is like the perfect chocolate—
+rich, smooth, and unforgettable.
+
+Every moment with you is
+as sweet as a chocolate kiss 😘
+
+Together, we're the perfect blend! 🍫✨
+
+Forever yours,
+Your loving Bas 💖`;
+
+        // Update button
+        btn.innerHTML = '<span class="music-playing"><span class="music-bars"><span></span><span></span><span></span></span> Music Playing 🎵</span>';
+        musicPlaying = true;
+    } else {
+        // Toggle pause/resume
+        if (music.paused) {
+            music.play();
+            btn.innerHTML = '<span class="music-playing"><span class="music-bars"><span></span><span></span><span></span></span> Music Playing 🎵</span>';
+        } else {
+            music.pause();
+            btn.innerHTML = '🎵 Resume Music 🎵';
+        }
+    }
+});
+
+// Create falling chocolate pieces
+function createChocolatePiece() {
+    const chocolates = ['🍫', '🍬', '🍭', '🍩', '🧁', '🎂'];
+    const piece = document.createElement('div');
+    piece.className = 'chocolate-piece';
+    piece.textContent = chocolates[Math.floor(Math.random() * chocolates.length)];
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.fontSize = (Math.random() * 15 + 15) + 'px';
+    piece.style.animationDuration = (Math.random() * 4 + 5) + 's';
+    piece.style.animationDelay = Math.random() * 2 + 's';
+    chocolateRain.appendChild(piece);
+    
+    setTimeout(() => piece.remove(), 9000);
+}
+
+// Create continuous chocolate rain
+setInterval(createChocolatePiece, 800);
+
+// Initial chocolates
+for (let i = 0; i < 8; i++) {
+    setTimeout(createChocolatePiece, i * 200);
+}
+
+// Create floating hearts with varying sizes
+function createHeart() {
+    const hearts = ['❤️', '💕', '💖', '💗', '💝', '💘'];
+    const sizes = ['small', 'small', 'medium', 'medium', 'large', 'extra-large'];
+    
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    
+    // Randomly assign size class
+    const sizeClass = sizes[Math.floor(Math.random() * sizes.length)];
+    heart.classList.add(sizeClass);
+    
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDelay = Math.random() * 1 + 's';
+    
+    heartContainer.appendChild(heart);
+    
+    // Remove after animation completes
+    const duration = sizeClass === 'small' ? 6000 : 
+                     sizeClass === 'medium' ? 7000 : 
+                     sizeClass === 'large' ? 8000 : 9000;
+    
+    setTimeout(() => heart.remove(), duration);
+}
+
+// Continuous hearts - more frequent for variety
+setInterval(createHeart, 800);
+
+// Initial hearts burst
+for (let i = 0; i < 10; i++) {
+    setTimeout(createHeart, i * 150);
+}
+
+// Create sparkles
+function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.style.left = Math.random() * 100 + 'vw';
+    sparkle.style.top = Math.random() * 100 + 'vh';
+    sparkle.style.animationDelay = Math.random() * 2 + 's';
+    sparkleContainer.appendChild(sparkle);
+    
+    setTimeout(() => sparkle.remove(), 2500);
+}
+
+// Continuous sparkles
+setInterval(createSparkle, 500);
+
+// Initial sparkles
+for (let i = 0; i < 15; i++) {
+    setTimeout(createSparkle, i * 100);
+}
+
+// Try to preload music
+window.addEventListener('load', () => {
+    music.load();
+});
+
+// Alternative click anywhere to start music (for autoplay policies)
+let firstClick = true;
+document.addEventListener('click', () => {
+    if (firstClick && !musicPlaying) {
+        music.play().catch(e => console.log('Autoplay blocked'));
+        firstClick = false;
+    }
+});
 </script>
+
 </body>
 </html>
- 
